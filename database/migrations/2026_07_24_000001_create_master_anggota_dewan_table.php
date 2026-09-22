@@ -1,0 +1,27 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('master_anggota_dewan', function (Blueprint $table) {
+            $table->id();
+            $table->string('dapil', 50);
+            $table->string('kabupaten', 100);
+            $table->string('nama', 200);
+            $table->string('partai', 100);
+            $table->string('periode', 20)->default('2024-2029');
+            $table->boolean('is_active')->default(true);
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('master_anggota_dewan');
+    }
+};
